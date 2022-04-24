@@ -14,7 +14,7 @@ module.exports.getIncome = async (req, res, next) => {
 module.exports.createIncome = async (req, res, next) => {
     try {
         const data = await mongo.db.collection("income").insertOne({
-            date: new Date(req.body.date),
+            date: new Date(req.body.date.toString()),
             amount: req.body.amount
         });
         res.send(data);
