@@ -1,10 +1,10 @@
 API Documentation
 
-Income
+Income:
 /income - To get all the income data
 /income/create - To add the income
 
-Expenditure
+Expenditure:
 /expenditure - To get all the expenditure
 /expenditure/create - To add the expense
 
