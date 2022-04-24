@@ -1,7 +1,8 @@
 const express = require("express");
-const dotenv = require("dotenv");
 const incomeRouter = require("./routes/incomeRouter");
 const expenditureRouter = require("./routes/expenditureRouter")
+const filterDataRouter = require("./routes/filterDataRouter");
+const dotenv = require("dotenv");
 const mongo = require("./shared/connect");
 const cors = require("cors");
 
@@ -18,4 +19,6 @@ app.use("/", (req, res, next) => {
 
 app.use("/income", incomeRouter);
 app.use("/expenditure", expenditureRouter);
+app.use('/filter', filterDataRouter);
+
 app.listen(process.env.PORT || 3001);
