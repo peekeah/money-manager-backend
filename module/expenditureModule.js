@@ -56,3 +56,15 @@ module.exports.updateExpenditure = async (req, res, next) => {
         res.status(500).send(err);
     }
 }
+
+module.exports.filterExpenditure = async (req, res, next) => {
+    try {
+        const data = await mongo.db.collection('expenditure')
+        .find({$and:[{posting_date: {$gte: new Date(req.body.from)}}, {posting_date: {$lte: new Date(req.body.to)}}]}).toArray();
+        res.send(data);
+        console.log(data);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send(err);
+    }
+}

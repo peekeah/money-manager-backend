@@ -53,3 +53,15 @@ module.exports.updateIncome = async (req, res, next) => {
         res.status(500).send(err);
     }
 }
+
+module.exports.filterIncome= async (req, res, next) => {
+    try {
+        const data = await mongo.db.collection('income')
+        .find({$and:[{date: {$gte: new Date(req.body.from)}}, {date: {$lte: new Date(req.body.to)}}]}).toArray();
+        res.send(data);
+        console.log(data);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send(err);
+    }
+}
